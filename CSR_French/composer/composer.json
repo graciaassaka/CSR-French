@@ -1,0 +1,15 @@
+{
+    "name": "graciaassaka/school-project",
+    "description": "School Website",
+    "type": "project",
+    "license": "proprietary",
+    "authors": [
+        {
+            "name": "Gracia"
+        }
+    ],
+    "minimum-stability": "stable",
+    "require": {
+        "phpmailer/phpmailer": "^6.8"
+    }
+}

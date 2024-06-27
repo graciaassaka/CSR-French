@@ -1,0 +1,289 @@
+<?php
+// TODO: Database connection will go here
+
+// start session
+session_start();
+
+// Mock-up data
+$introduction = array(
+	"heading" => "La Reconnaissance",
+	"text" => "Le Complexe Scolaire la Reconnaissance est un établissement d'enseignement dont l'objectif est de fournir une éducation excellente et abordable à la jeunesse congolaise.",
+	"images" => array(
+		array(
+			"src" => "images/students_girl_2.jpg",
+			"alt" => "Une fille de la Reconnaissance",
+			"loading" => "lazy",
+			"class" => "round"
+		),
+		array(
+			"src" => "images/students_gym.jpg",
+			"alt" => "Les eleves de la Reconnaissance lors de la gymnastique",
+			"loading" => "lazy",
+			"class" => "round"
+		),
+		array(
+			"src" => "images/students_girl_gym.JPG",
+			"alt" => "Une fille de la Reconnaissance",
+			"loading" => "lazy",
+			"class" => "round"
+		),
+		array(
+			"src" => "images/student_boy.jpg",
+			"alt" => "Un garcon de la Reconnaissace",
+			"loading" => "lazy",
+			"class" => "round"
+		)
+	)
+);
+
+$inscription = array(
+	"heading" => "Inscription",
+	"text" => "La procédure d'inscription dans notre établissement scolaire est simple. Les élèves du primaire doivent avoir un certificat de naissance pour s'inscrire. Ceux du secondaire et des humanités doivent apporter leurs relevés de notes des classes précédentes.",
+	"image" => array(
+		"src" => "images/students_in_class_2.jpg",
+		"alt" => "Les eleves en classe",
+		"loading" => "lazy",
+		"class" => "img-fluid round"
+	),
+	"link" => "admission-au-complexe-scolaire-la-reconnaissance.php"
+);
+
+$mission = array(
+	"heading" => "Mission",
+	"text" => "Afin de former les futurs leaders de la communauté, nous offrons un environnement idéal pour le développement intellectuel de nos éléves.",
+	"image" => array(
+		"src" => "images/student_in_class_3.jpg",
+		"alt" => "Les eleves en tenue de gymnastique",
+		"loading" => "lazy",
+		"class" => "img-fluid round"
+	),
+	"link" => "vie-a-la-reconnaissance.php"
+);
+
+$infrastructure = array(
+	"heading" => "Des infrastructures modernes",
+	"text" => "Notre école dispose de trois sites différents.Nous sommes fiers de dire que nos infrastructures sont parmi les meilleures du pays pour offrir aux élèves un lieu idéal pour apprendre et grandir. Nos écoles sont équipées de toutes les installations modernes pour répondre aux besoins éducatifs de nos élèves. Nous avons un terrain de basket-ball intégré pour encourager les activités sportives et une salle pour les festivités où les élèves peuvent organiser leurs manifestations. Nous sommes convaincus que nos écoles sont un environnement parfait pour permettre aux élèves de s'épanouir et d'acquérir les compétences nécessaires pour réussir leur vie. Si vous cherchez un endroit où votre enfant peut apprendre dans un cadre moderne et stimulant, notre école est le choix idéal."
+);
+
+$buildings = array(
+	"Dibanda" =>
+	array(
+		"description" => "Notre école dispose d'un bâtiment de haute qualité pour nos humanités. Nous sommes fiers de dire que le bâtiment offre des salles de classe modernes, un laboratoire informatique, un stade de basket-ball pour encourager les activités sportives de nos élèves, une salle polyvalante ou nos élèves peuvent organiser des manifestations scolaires et répond aux normes sanitaires les plus élevées.",
+		"image" =>
+		array(
+			"src" => "images/building_dibanda_in.jpg",
+			"alt" => "Batiment de la Reconnaissance_Dibanda",
+			"loading" => "lazy",
+			"class" => "bd-placeholder-img card-img-top"
+		)
+	),
+	"Concorde" =>
+	array(
+		"description" => "Nous sommes fiers de notre bâtiment moderne pour l'école secondaire, qui offre des salles de classe modernes et équipées, un laboratoire d'informatique et un terrain de basket-ball pour encourager les activités sportives de nos élèves. En outre, nous avons répondu aux exigences sanitaires actuelles en mettant en place des mesures pour garantir un environnement sûr et sain pour nos élèves.",
+		"image" =>
+		array(
+			"src" => "images/concorde_building.jpg",
+			"alt" => "Batiment de la Reconnaissance_Concorde",
+			"loading" => "lazy",
+			"class" => "bd-placeholder-img card-img-top"
+		)
+	),
+	"Gecamine" =>
+	array(
+		"description" => "Notre école primaire dispose d'un bâtiment moderne et impressionnant qui répond aux exigences sanitaires en matière d'éducation. Les salles de classe sont modernes et équipées de nombreux jouets et équipements éducatifs pour encourager les élèves à apprendre de manière ludique. En plus de cela, nous avons une équipe enseignante dévouée qui travaille avec diligence pour offrir une éducation de qualité à nos élèves.",
+		"image" =>
+		array(
+			"src" => "images/concorde_building.jpg",
+			"alt" => "Batiment de la Reconnaissance_Gecamine",
+			"loading" => "lazy",
+			"class" => "bd-placeholder-img card-img-top"
+		)
+	),
+);
+
+$polyclinic = array(
+	"heading" => "Nous nous soucions de la santé de nos éléves",
+	"text" => "Le Complexe Scolaire la Reconnaissance dispose également d'une polyclinique garantissant des soins de santé de qualité à nos éléves.",
+	"link" => "polyclinique-la-reconnaissance.php",
+);
+$achievement = array(
+	"heading" => "À la Reconnaissance, nous avons la recette de l'excellence en éducation",
+	"text" => "Nous encourageons nos éléves à devenir des apprenants disciplinés et studieux. Notre mission est de fournir à nos éléves les connaissances dont ils auront besoin pour être utiles dans la communauté. Nous sommes fiers d'annoncer que nos élèves ont régulièrement remporté des prix d'excellence aux examens d'Etat, ce qui témoigne de l'engagement de notre école envers l'excellence académique.",
+	"link" => "achievements.php"
+);
+
+/**
+ * Generates the main section of the webpage.
+ *
+ * @param string $section The section to generate.
+ * @return void
+ */
+function generateMainSection($section)
+{
+?>
+	<div class="col-sm-4">
+		<figure>
+			<a href="<?php echo $section['link']; ?>">
+				<img src="<?php echo $section['image']['src']; ?>" alt="<?php echo $section['image']['alt']; ?>" loading="<?php echo $section['image']['loading']; ?>" class="<?php echo $section['image']['class']; ?>">
+			</a>
+		</figure>
+		<h2 class="headingColor"><?php echo $section['heading']; ?></h2>
+		<p class="lead"><?php echo $section['text']; ?></p>
+	</div>
+<?php
+}
+
+/**
+ * Generates a building card.
+ *
+ * @param string $key The key of the building.
+ * @param array $building The building data.
+ * @return void
+ */
+function generateBuildingCard($key, $building) {
+    ?>
+    <div class="col">
+        <div class="<?php echo $key === 'Concorde' ? 'white' : 'black'; ?> card shadow-sm">
+            <img src="<?php echo $building['image']['src']; ?>" alt="<?php echo $building['image']['alt']; ?>" loading="<?php echo $building['image']['loading']; ?>" class="<?php echo $building['image']['class']; ?>">
+            <div class="card-body">
+                <p class="card-text"><?php echo $building['description']; ?></p>
+                <div class="d-flex justify-content-between align-items-center">
+                    <a href="visite.php?site=<?php echo $key; ?>" class="button-rounded" role="button"><small>Visitez <?php echo $key; ?></small></a>
+                </div>
+            </div>
+        </div>
+    </div>
+    <?php
+}
+
+/**
+ * Generates an additional section with the given parameters.
+ *
+ * @param string $section The section content.
+ * @param string $sectionClass The CSS class for the section.
+ * @param string $button The button content.
+ * @return void
+ */
+function generateAdditionalSection($section, $sectionClass, $button)
+{
+?>
+	<div class="col-md-6">
+		<div class="<?php echo $sectionClass; ?> h-100 p-5 text-bg-dark rounded-3">
+			<h2><?php echo $section['heading']; ?></h2>
+			<p><?php echo $section['text']; ?></p>
+			<a href="<?php echo $section['link']; ?>" class="button-basic btn-outline-light" role="button"><?php echo $button; ?></a>
+		</div>
+	</div>
+<?php
+}
+?>
+<!doctype html>
+<html lang="fr">
+
+<head>
+	<!-- Canonical link -->
+	<link rel="canonical" href="https://lareconnaissance.com">
+	<!-- Bootstrap CSS -->
+	<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.3.1/dist/css/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+	<!-- Required meta tags, favicon, and CSS -->
+	<?php include 'Includes/head.php'; ?>
+	<!-- Title -->
+	<title>Complexe Scolaire la Reconnaissance</title>
+</head>
+
+<body>
+	<!-- Navigation bar -->
+	<?php include 'includes/navbar.php'; ?>
+
+	<!--Header and Hero Image-->
+	<header class="jumbotron-fluid heroIndex">
+		<div class="container welcome text-white">
+			<img src="images/CSR_logo.png" alt="Complexe Scolaire la Reconnaissance Logo" loading="lazy" class="float-left mr-3 img-fluid">
+			<?php
+			if (isset($_SESSION['username'])) {
+				printf("<h1>Bienvenue, %s</h1>", $_SESSION['username']);
+			}
+			?>
+			<p class="grid tablet-desktop">Obtenez une éducation abordable et excellente!</p>
+			<a href="admission-au-complexe-scolaire-la-reconnaissance.php" class="button-basic btn btn btn-outline-light" role="button">Inscrivez vous maintenant!</a>
+		</div>
+	</header>
+
+	<!--Main Content Area-->
+	<main class="container-fluid mt-5">
+
+		<div class="row">
+			<!-- Introduction -->
+			<div class="col-sm-4">
+				<!-- Slideshow container -->
+				<a href="a-propos-du-complexe-scolaire-la-reconnaissance.php">
+					<div class="slideshow-container">
+						<?php foreach ($introduction['images'] as $image) : ?>
+							<div class="mySlides_1 fade">
+								<img src="<?php echo $image['src']; ?>" alt="<?php echo $image['alt']; ?>" loading="<?php echo $image['loading']; ?>" class="<?php echo $image['class']; ?>">
+							</div>
+						<?php endforeach; ?>
+					</div>
+				</a>
+				<br>
+				<!-- The dots/circles -->
+				<div style="text-align:center">
+					<?php for ($i = 0; $i < count($introduction['images']); $i++) : ?>
+						<span class="dot_1"></span>
+					<?php endfor; ?>
+				</div>
+
+				<h2 class="headingColor"><?php echo $introduction['heading']; ?></h2>
+				<p class="lead"><?php echo $introduction['text']; ?></p>
+			</div>
+			<!-- Inscription -->
+			<?php
+			generateMainSection($inscription);
+			?>
+			<!-- Mission -->
+			<?php
+			generateMainSection($mission);
+			?>
+		</div>
+
+		<div class="p-5 mb-4 rounded-3 tablet-desktop">
+
+			<div class="infrastructure p-4 p-md-5 mb-4 rounded text-bg-dark">
+				<!-- Infrastructures -->
+				<div class="col-md-6 px-0">
+					<h1 class="display-4 fst-italic"><?php echo $infrastructure['heading']; ?></h1>
+					<p class="lead my-3"><?php echo $infrastructure['text']; ?></p>
+				</div>
+			</div>
+
+			<div class="album py-5">
+				<div class="container">
+					<div class="row row-cols-1 row-cols-sm-2 row-cols-md-3 g-3">
+						<?php foreach ($buildings as $key => $building) : ?>
+							<?php generateBuildingCard($key, $building); ?>
+						<?php endforeach; ?>
+					</div>
+				</div>
+			</div>
+
+			<br>
+			<br>
+			<br>
+			<div class="row align-items-md-stretch">
+				<!-- Polyclinique -->
+				<?php generateAdditionalSection($polyclinic, 'polyclinic', 'Visitez notre polyclinique'); ?>
+				<!-- Accomplissements -->
+				<?php generateAdditionalSection($achievement, 'achievement', 'Nos accomplissements'); ?>
+			</div>
+		</div>
+	</main>
+
+	<!--Footer-->
+	<?php include "includes/footer.php"; ?>
+	<!--Back_to_top_button-->
+	<?php include "includes/back_to_top.php"; ?>
+	<!-- Scripts -->
+	<?php include "includes/scripts.php"; ?>
+</body>
+
+</html>
